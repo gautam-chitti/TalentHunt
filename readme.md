@@ -69,7 +69,7 @@ The application uses a single table named candidates within the candidates.db SQ
 1. **Clone the Repository:**
 
 ```bash
-   git clone \<your-repo-link\>
+   git clone https://github.com/gautam-chitti/TalentHunt
    cd talent-scout-chatbot
 ```
 
