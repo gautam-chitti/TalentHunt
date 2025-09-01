@@ -2,7 +2,7 @@
 
 ## **1\. Project Overview**
 
-This project is an intelligent Hiring Assistant chatbot developed for the fictional recruitment agency "TalentScout". The application serves as a comprehensive initial screening tool that interacts with candidates to gather essential profile information, conducts a preliminary technical assessment using a Large Language Model (LLM), and securely stores the data for administrator review.
+This project is an intelligent Hiring Assistant chatbot developed for the fictional recruitment agency "TalentHunt". The application serves as a comprehensive initial screening tool that interacts with candidates to gather essential profile information, conducts a preliminary technical assessment using a Large Language Model (LLM), and securely stores the data for administrator review.
 
 The system features a dual-interface design: a conversational AI for candidates and a secure dashboard for administrators to view and manage submissions. This project was built to satisfy the requirements of the PG-AGI AI/ML Intern Assignment.
 
