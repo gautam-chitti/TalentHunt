@@ -40,7 +40,7 @@ def reset_session():
     st.session_state.stage = "gathering_info"
     st.session_state.current_field_index = 0
     st.session_state.candidate_data = {}
-    st.session_state.conversation = [("assistant", "Hello! I'm the TalentScout Hiring Assistant. Let's start with your full name.")]
+    st.session_state.conversation = [("assistant", "Hello! I'm the TalentHunt Hiring Assistant. Let's start with your full name.")]
 
 if 'stage' not in st.session_state:
     reset_session()

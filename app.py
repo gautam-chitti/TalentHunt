@@ -4,7 +4,7 @@ from streamlit_extras.app_logo import add_logo
 
 # Page Configuration
 st.set_page_config(
-    page_title="Welcome to TalentScout AI",
+    page_title="Welcome to TalentHunt AI",
     page_icon="🤖",
     layout="centered"
 )
@@ -25,7 +25,7 @@ st.markdown("""
 
 
 # Main  Page 
-st.title("Welcome to TalentScout AI 🤖")
+st.title("Welcome to TalentHunt AI 🤖")
 st.write("Your intelligent partner in technical screening.")
 
 if 'admin_logged_in' not in st.session_state:
