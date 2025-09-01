@@ -1,4 +1,4 @@
-# **TalentScout AI Hiring Assistant**
+# **TalentHunt AI Hiring Assistant**
 
 ## **1\. Project Overview**
 
