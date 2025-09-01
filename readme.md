@@ -21,7 +21,7 @@ The application is a multi-page Streamlit web app with role-based access control
   - A password-protected page accessible only to administrators.
   - Displays all candidate submissions in a clean, tabular format.
   - **Hardcoded Credentials:** For this assignment, administrator access is granted using the following hardcoded credentials:
-    - **Email:** admin@taskhunt.com
+    - **Email:** admin@talenthunt.com
     - **Password:** admin123
 - **Persistent Data Storage:**
   - All candidate data is stored in a local SQLite database (candidates.db), ensuring data persistence between sessions.

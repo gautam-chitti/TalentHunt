@@ -51,7 +51,7 @@ if not st.session_state.admin_logged_in:
 
                 if submitted:
                     # Hardcoded credentials for this assignment
-                    if email == "admin@taskhunt.com" and password == "admin123":
+                    if email == "admin@talenthunt.com" and password == "admin123":
                         st.session_state.admin_logged_in = True
                         st.success("Signed in successfully!")
                         st.rerun() 
