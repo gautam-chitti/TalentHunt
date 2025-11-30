@@ -1,17 +1,17 @@
-# TalentHunt AI 🚀
+# TalentHunt AI 
 
 **TalentHunt AI** is an Autonomous AI Hiring System designed to streamline the recruitment process. It leverages **RAG (Retrieval-Augmented Generation)** and **Large Language Models (LLMs)** to screen resumes, conduct initial technical interviews, and rank candidates based on semantic fit.
 
 ![System Architecture](images/architecture.png)
 
-## 🌟 Key Features
+## Key Features
 
 -   **Autonomous Screening:** Parses PDF resumes and calculates a **Semantic Match Score** against the Job Description using Vector Embeddings.
 -   **AI Interviewer:** Conducts dynamic, chat-based technical interviews using **Mistral 7B**. Questions are tailored to the candidate's resume gaps.
 -   **Recruiter Dashboard:** A secure, password-protected dashboard for recruiters to view ranked candidates, interview transcripts, and AI summaries.
 -   **Premium UI/UX:** A modern, dark-themed interface with role-based navigation.
 
-## 📸 Application Screenshots
+## Application Screenshots
 
 ### Landing Page
 The entry point for both Candidates and Recruiters.
@@ -40,7 +40,7 @@ View ranked candidates and detailed insights.
 -   **Orchestration:** LangChain
 -   **Database:** SQLite
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -85,8 +85,7 @@ View ranked candidates and detailed insights.
 2.  **Access the App:**
     Open your browser at `http://localhost:8501`.
 
-## 📄 Project Report
+## Project Report
 A detailed project report (`project_report.tex`) is included in the root directory. You can compile it using any LaTeX editor to generate a PDF documentation of the project.
 
 ---
-*Built with ❤️ by the TalentHunt AI Team*
