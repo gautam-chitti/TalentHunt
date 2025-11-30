@@ -1,30 +1,48 @@
-# TalentHunt AI
+# **TalentHunt AI Hiring Assistant**
 
-**TalentHunt AI** is an Autonomous AI Hiring System designed to streamline the recruitment process. It leverages **RAG (Retrieval-Augmented Generation)** and **Large Language Models (LLMs)** to screen resumes, conduct initial technical interviews, and rank candidates based on semantic fit.
+## **1\. Project Overview**
 
-![Landing Page](images/landing.png)
+This project is an intelligent Hiring Assistant chatbot developed for the fictional recruitment agency "TalentScout". The application serves as a comprehensive initial screening tool that interacts with candidates to gather essential profile information, conducts a preliminary technical assessment using a Large Language Model (LLM), and securely stores the data for administrator review.
 
-## Key Features
+The system features a dual-interface design: a conversational AI for candidates and a secure dashboard for administrators to view and manage submissions. This project was built to satisfy the requirements of the PG-AGI AI/ML Intern Assignment.
 
-- **Autonomous Screening:** Parses PDF resumes and calculates a **Semantic Match Score** against the Job Description using Vector Embeddings.
-- **AI Interviewer:** Conducts dynamic, chat-based technical interviews using **Mistral 7B**. Questions are tailored to the candidate's resume gaps.
-- **Multiple Roles:** Candidates can apply for various positions (e.g., Full Stack Engineer, Data Scientist).
-- **Recruiter Dashboard:** A secure, password-protected dashboard for recruiters to view ranked candidates, interview transcripts, and AI summaries.
-- **Premium UI/UX:** A modern, dark-themed interface with role-based navigation and a seamless candidate experience.
+## **2\. Architecture and Features**
 
-## System Architecture
+The application is a multi-page Streamlit web app with role-based access control.
 
-The system uses a modular RAG pipeline to process resumes and conduct interviews.
+### **Key Features:**
 
-![System Architecture](images/architecture.png)
+- **User Portal:** A main landing page that directs users to either the candidate screening test or an administrator login form.
+- **Candidate Screening Chatbot:**
+  - A conversational interface that guides candidates through a structured information-gathering process.
+  - Dynamically generates tailored technical questions based on the candidate's declared tech stack using a local LLM (Ollama with Llama 3).
+  - Collects answers and concludes the session gracefully.
+- **Secure Admin Dashboard:**
+  - A password-protected page accessible only to administrators.
+  - Displays all candidate submissions in a clean, tabular format.
+  - **Hardcoded Credentials:** For this assignment, administrator access is granted using the following hardcoded credentials:
+    - **Email:** admin@talenthunt.com
+    - **Password:** admin123
+- **Persistent Data Storage:**
+  - All candidate data is stored in a local SQLite database (candidates.db), ensuring data persistence between sessions.
+- **AI-Powered Sentiment Analysis:**
+  - As a bonus feature, the application uses the LLM to perform a brief sentiment and confidence analysis on the candidate's technical answers, providing recruiters with an at-a-glance impression.
 
-## Tech Stack
+### **File Structure:**
 
-- **Frontend:** Streamlit
-- **LLM:** Ollama (Mistral 7B Instruct)
-- **Embeddings:** Nomic Embed Text
-- **Vector Store:** ChromaDB
-- **Orchestration:** LangChain
+talent-scout-chatbot/  
+|-- app.py \# Main landing/login page  
+|-- database.py \# SQLite database logic  
+|-- requirements.txt \# Project dependencies  
+\`-- pages/  
+ |-- 1_Take_Screening_Test.py \# Chatbot UI and logic for candidates  
+ \`-- 2_Admin_Dashboard.py \# Data viewer for the admin
+
+## **3\. Technical Details**
+
+- **Programming Language:** Python
+- **Frontend Framework:** Streamlit
+- **Large Language Model:** Llama 3 (via Ollama)
 - **Database:** SQLite
 
 ## Getting Started
