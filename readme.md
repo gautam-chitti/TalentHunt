@@ -85,7 +85,6 @@ View ranked candidates and detailed insights.
 2.  **Access the App:**
     Open your browser at `http://localhost:8501`.
 
-## Project Report
-A detailed project report (`project_report.tex`) is included in the root directory. You can compile it using any LaTeX editor to generate a PDF documentation of the project.
+
 
 ---
