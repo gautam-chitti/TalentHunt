@@ -4,27 +4,28 @@ __pycache__/
 *$py.class
 .venv/
 venv/
-*.env
+env/
 
 # Streamlit
 .streamlit/
+! .streamlit/config.toml
 
 # Database
 *.db
-*.sqlite3
 chroma_db/
 
-# LaTeX
+# Environment Variables
+.env
+
+# LaTeX / Report
 *.aux
 *.log
 *.out
 *.toc
-*.synctex.gz
 *.pdf
+project_report.tex
+CCI_Framework_Explanation.md
 
 # IDE
 .vscode/
 .idea/
-
-# Project specific
-candidates.db

@@ -1,74 +1,67 @@
-# **TalentHunt AI Hiring Assistant**
+# TalentHunt AI 🚀
 
-## **1\. Project Overview**
+**TalentHunt AI** is an Autonomous AI Hiring System designed to streamline the recruitment process. It leverages **RAG (Retrieval-Augmented Generation)** and **Large Language Models (LLMs)** to screen resumes, conduct initial technical interviews, and rank candidates based on semantic fit.
 
-This project is an intelligent Hiring Assistant chatbot developed for the fictional recruitment agency "TalentScout". The application serves as a comprehensive initial screening tool that interacts with candidates to gather essential profile information, conducts a preliminary technical assessment using a Large Language Model (LLM), and securely stores the data for administrator review.
+![System Architecture](images/architecture.png)
 
-The system features a dual-interface design: a conversational AI for candidates and a secure dashboard for administrators to view and manage submissions. This project was built to satisfy the requirements of the PG-AGI AI/ML Intern Assignment.
+## 🌟 Key Features
 
-## **2\. Architecture and Features**
+-   **Autonomous Screening:** Parses PDF resumes and calculates a **Semantic Match Score** against the Job Description using Vector Embeddings.
+-   **AI Interviewer:** Conducts dynamic, chat-based technical interviews using **Mistral 7B**. Questions are tailored to the candidate's resume gaps.
+-   **Recruiter Dashboard:** A secure, password-protected dashboard for recruiters to view ranked candidates, interview transcripts, and AI summaries.
+-   **Premium UI/UX:** A modern, dark-themed interface with role-based navigation.
 
-The application is a multi-page Streamlit web app with role-based access control.
+## 📸 Application Screenshots
 
-### **Key Features:**
+### Landing Page
+The entry point for both Candidates and Recruiters.
+![Landing Page](images/landing.png)
 
-- **User Portal:** A main landing page that directs users to either the candidate screening test or an administrator login form.
-- **Candidate Screening Chatbot:**
-  - A conversational interface that guides candidates through a structured information-gathering process.
-  - Dynamically generates tailored technical questions based on the candidate's declared tech stack using a local LLM (Ollama with Llama 3).
-  - Collects answers and concludes the session gracefully.
-- **Secure Admin Dashboard:**
-  - A password-protected page accessible only to administrators.
-  - Displays all candidate submissions in a clean, tabular format.
-  - **Hardcoded Credentials:** For this assignment, administrator access is granted using the following hardcoded credentials:
-    - **Email:** admin@talenthunt.com
-    - **Password:** admin123
-- **Persistent Data Storage:**
-  - All candidate data is stored in a local SQLite database (candidates.db), ensuring data persistence between sessions.
-- **AI-Powered Sentiment Analysis:**
-  - As a bonus feature, the application uses the LLM to perform a brief sentiment and confidence analysis on the candidate's technical answers, providing recruiters with an at-a-glance impression.
+### Candidate Journey
+1.  **Registration:** Candidates enter their details.
+    ![Registration](images/RegisterCandidate.png)
+2.  **Screening:** Resume is analyzed against the JD.
+    ![Screening Result](images/ProceedTotest.png)
+3.  **AI Interview:** Dynamic technical interview based on the resume.
+    ![AI Interview](images/chat.png)
+4.  **Completion:** Final feedback and score.
+    ![Test Done](images/Testdone.png)
 
-### **File Structure:**
+### Recruiter Dashboard
+View ranked candidates and detailed insights.
+![Recruiter Dashboard](images/RecruiterDash.png)
 
-talent-scout-chatbot/  
-|-- app.py \# Main landing/login page  
-|-- database.py \# SQLite database logic  
-|-- requirements.txt \# Project dependencies  
-\`-- pages/  
- |-- 1_Take_Screening_Test.py \# Chatbot UI and logic for candidates  
- \`-- 2_Admin_Dashboard.py \# Data viewer for the admin
+## 🛠️ Tech Stack
 
-## **3\. Technical Details**
+-   **Frontend:** Streamlit
+-   **LLM:** Ollama (Mistral 7B Instruct)
+-   **Embeddings:** Nomic Embed Text
+-   **Vector Store:** ChromaDB
+-   **Orchestration:** LangChain
+-   **Database:** SQLite
 
-- **Programming Language:** Python
-- **Frontend Framework:** Streamlit
-- **Large Language Model:** Llama 3 (via Ollama)
-- **Database:** SQLite
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 1.  **Python 3.10+**
 2.  **Ollama** installed and running locally.
-    - Download from [ollama.com](https://ollama.com).
-    - Pull the required models:
-      ```bash
-      ollama pull mistral:7b-instruct
-      ollama pull nomic-embed-text
-      ```
+    -   Download from [ollama.com](https://ollama.com).
+    -   Pull the required models:
+        ```bash
+        ollama pull mistral:7b-instruct
+        ollama pull nomic-embed-text
+        ```
 
 ### Installation
 
 1.  **Clone the repository:**
-
     ```bash
     git clone <repository-url>
     cd TalentHunt
     ```
 
 2.  **Create and activate a virtual environment:**
-
     ```bash
     python -m venv .venv
     # Windows
@@ -85,7 +78,6 @@ talent-scout-chatbot/
 ### Running the Application
 
 1.  **Start the Streamlit app:**
-
     ```bash
     streamlit run app.py
     ```
@@ -93,23 +85,8 @@ talent-scout-chatbot/
 2.  **Access the App:**
     Open your browser at `http://localhost:8501`.
 
-## User Guide
+## 📄 Project Report
+A detailed project report (`project_report.tex`) is included in the root directory. You can compile it using any LaTeX editor to generate a PDF documentation of the project.
 
-### For Candidates
-
-1.  **Landing Page:** Click **"Start Your Journey"**.
-2.  **Register:** Enter your details (Name, Email, Skills).
-    ![Registration](images/RegisterCandidate.png)
-3.  **Upload Resume:** Select a Role and Upload your PDF Resume.
-    ![Resume Upload](images/ProceedTotest.png)
-4.  **AI Interview:** If your resume matches (> 40%), you will proceed to the interview.
-    ![AI Interview](images/chat.png)
-5.  **Feedback:** Receive your **Match Score** immediately.
-    ![Completion](images/Testdone.png)
-
-### For Recruiters
-
-1.  **Login:** Access the dashboard with credentials (`admin@talenthunt.com` / `admin123`).
-2.  **Dashboard:** View the **Leaderboard** of candidates ranked by score.
-    ![Recruiter Dashboard](images/RecruiterDash.png)
-3.  **Deep Dive:** Expand any candidate to see their **Resume Summary**, **Interview Transcript**, and **Contact Details**.
+---
+*Built with ❤️ by the TalentHunt AI Team*
