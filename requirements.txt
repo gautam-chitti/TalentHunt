@@ -1,3 +1,13 @@
 streamlit
 ollama
 pandas
+pypdf
+langchain
+langchain-core
+langchain-community
+langchain-huggingface
+langchain-chroma
+langchain-ollama
+chromadb
+sentence-transformers
+streamlit_extras        

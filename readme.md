@@ -1,151 +1,97 @@
-# **TalentHunt AI Hiring Assistant**
+# TalentHunt AI
 
-## **1\. Project Overview**
+**TalentHunt AI** is an Autonomous AI Hiring System designed to streamline the recruitment process. It leverages **RAG (Retrieval-Augmented Generation)** and **Large Language Models (LLMs)** to screen resumes, conduct initial technical interviews, and rank candidates based on semantic fit.
 
-This project is an intelligent Hiring Assistant chatbot developed for the fictional recruitment agency "TalentScout". The application serves as a comprehensive initial screening tool that interacts with candidates to gather essential profile information, conducts a preliminary technical assessment using a Large Language Model (LLM), and securely stores the data for administrator review.
+![Landing Page](images/landing.png)
 
-The system features a dual-interface design: a conversational AI for candidates and a secure dashboard for administrators to view and manage submissions. This project was built to satisfy the requirements of the PG-AGI AI/ML Intern Assignment.
+## Key Features
 
-## **2\. Architecture and Features**
+- **Autonomous Screening:** Parses PDF resumes and calculates a **Semantic Match Score** against the Job Description using Vector Embeddings.
+- **AI Interviewer:** Conducts dynamic, chat-based technical interviews using **Mistral 7B**. Questions are tailored to the candidate's resume gaps.
+- **Multiple Roles:** Candidates can apply for various positions (e.g., Full Stack Engineer, Data Scientist).
+- **Recruiter Dashboard:** A secure, password-protected dashboard for recruiters to view ranked candidates, interview transcripts, and AI summaries.
+- **Premium UI/UX:** A modern, dark-themed interface with role-based navigation and a seamless candidate experience.
 
-The application is a multi-page Streamlit web app with role-based access control.
+## System Architecture
 
-### **Key Features:**
+The system uses a modular RAG pipeline to process resumes and conduct interviews.
 
-- **User Portal:** A main landing page that directs users to either the candidate screening test or an administrator login form.
-- **Candidate Screening Chatbot:**
-  - A conversational interface that guides candidates through a structured information-gathering process.
-  - Dynamically generates tailored technical questions based on the candidate's declared tech stack using a local LLM (Ollama with Llama 3).
-  - Collects answers and concludes the session gracefully.
-- **Secure Admin Dashboard:**
-  - A password-protected page accessible only to administrators.
-  - Displays all candidate submissions in a clean, tabular format.
-  - **Hardcoded Credentials:** For this assignment, administrator access is granted using the following hardcoded credentials:
-    - **Email:** admin@talenthunt.com
-    - **Password:** admin123
-- **Persistent Data Storage:**
-  - All candidate data is stored in a local SQLite database (candidates.db), ensuring data persistence between sessions.
-- **AI-Powered Sentiment Analysis:**
-  - As a bonus feature, the application uses the LLM to perform a brief sentiment and confidence analysis on the candidate's technical answers, providing recruiters with an at-a-glance impression.
+![System Architecture](images/architecture.png)
 
-### **File Structure:**
+## Tech Stack
 
-talent-scout-chatbot/  
-|-- app.py \# Main landing/login page  
-|-- database.py \# SQLite database logic  
-|-- requirements.txt \# Project dependencies  
-\`-- pages/  
- |-- 1_Take_Screening_Test.py \# Chatbot UI and logic for candidates  
- \`-- 2_Admin_Dashboard.py \# Data viewer for the admin
-
-## **3\. Technical Details**
-
-- **Programming Language:** Python
-- **Frontend Framework:** Streamlit
-- **Large Language Model:** Llama 3 (via Ollama)
+- **Frontend:** Streamlit
+- **LLM:** Ollama (Mistral 7B Instruct)
+- **Embeddings:** Nomic Embed Text
+- **Vector Store:** ChromaDB
+- **Orchestration:** LangChain
 - **Database:** SQLite
-- **Key Python Libraries:** streamlit, pandas, ollama, streamlit_extras
 
-## **4\. Database Schema**
+## Getting Started
 
-The application uses a single table named candidates within the candidates.db SQLite database file.
+### Prerequisites
 
-| Column Name        | Data Type | Description                                                                   |
-| :----------------- | :-------- | :---------------------------------------------------------------------------- |
-| id                 | INTEGER   | Primary Key, Auto-incrementing.                                               |
-| full_name          | TEXT      | Candidate's full name.                                                        |
-| email              | TEXT      | Candidate's email address.                                                    |
-| phone              | TEXT      | Candidate's phone number.                                                     |
-| years_experience   | TEXT      | Candidate's stated years of professional experience.                          |
-| desired_positions  | TEXT      | The role(s) the candidate is interested in.                                   |
-| location           | TEXT      | Candidate's current location.                                                 |
-| tech_stack         | TEXT      | A string listing the candidate's technical skills.                            |
-| technical_answers  | TEXT      | A JSON string containing the generated questions and the candidate's answers. |
-| sentiment_analysis | TEXT      | The one-sentence summary generated by the LLM based on the answers.           |
-| submission_time    | TEXT      | The UTC timestamp (ISO format) when the record was created.                   |
+1.  **Python 3.10+**
+2.  **Ollama** installed and running locally.
+    - Download from [ollama.com](https://ollama.com).
+    - Pull the required models:
+      ```bash
+      ollama pull mistral:7b-instruct
+      ollama pull nomic-embed-text
+      ```
 
-## **5\. Installation Instructions**
+### Installation
 
-1. **Clone the Repository:**
+1.  **Clone the repository:**
 
-```bash
-   git clone https://github.com/gautam-chitti/TalentHunt
-   cd talent-scout-chatbot
-```
+    ```bash
+    git clone <repository-url>
+    cd TalentHunt
+    ```
 
-2. **Create and Activate a Virtual Environment:**
+2.  **Create and activate a virtual environment:**
 
-```bash
-   python \-m venv venv
-```
+    ```bash
+    python -m venv .venv
+    # Windows
+    .venv\Scripts\activate
+    # Mac/Linux
+    source .venv/bin/activate
+    ```
 
-```bash
-   # Activate on Windows
-   .\venv\Scripts\activate
-```
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```bash
-   # Activate on macOS/Linux
-   source venv/bin/activate
-```
+### Running the Application
 
-3. Install Ollama and Pull the LLM Model:  
-   Ensure Ollama is installed and running. Then, pull the llama3 model:
+1.  **Start the Streamlit app:**
 
-```bash
-   ollama pull llama3
-```
+    ```bash
+    streamlit run app.py
+    ```
 
-4. Install Dependencies:  
-   Install the required Python packages from the requirements.txt file.
+2.  **Access the App:**
+    Open your browser at `http://localhost:8501`.
 
-```bash
-   pip install -r requirements.txt
-```
+## User Guide
 
-## **6\. Usage Guide**
+### For Candidates
 
-1. Ensure the Ollama application is running in the background.
-2. Navigate to the project's root directory in your terminal.
-3. Run the main Streamlit application:  
-   streamlit run app.py
+1.  **Landing Page:** Click **"Start Your Journey"**.
+2.  **Register:** Enter your details (Name, Email, Skills).
+    ![Registration](images/RegisterCandidate.png)
+3.  **Upload Resume:** Select a Role and Upload your PDF Resume.
+    ![Resume Upload](images/ProceedTotest.png)
+4.  **AI Interview:** If your resume matches (> 40%), you will proceed to the interview.
+    ![AI Interview](images/chat.png)
+5.  **Feedback:** Receive your **Match Score** immediately.
+    ![Completion](images/Testdone.png)
 
-4. The application will open in your web browser.
-   - **As a Candidate:** Click the "Candidate" button to start the screening test and interact with the chatbot.
-   - **As an Administrator:** Use the "Administrator (Sign In)" expander on the main page and enter the hardcoded credentials to log in. Once logged in, the "Admin Dashboard" will become accessible in the sidebar.
+### For Recruiters
 
-## **7\. Prompt Design**
-
-Two primary prompts were engineered to interact with the LLM for specific tasks.
-
-### **Prompt 1: Technical Question Generation**
-
-This prompt is designed to be strict and direct to ensure a clean, machine-parsable output.
-
-Generate exactly 4 concise and relevant technical questions for a candidate with this tech stack: {tech_stack}.  
-IMPORTANT: Your response must begin immediately with "1." and contain nothing but the numbered list of questions. Do not add any introductory text.
-
-- **Objective:** To get a list of relevant technical questions.
-- **Strategy:** The prompt explicitly forbids conversational filler ("Here are some questions...") and enforces a strict numbered list format. This makes the LLM's output reliable and easy for the Python script to parse.
-
-### **Prompt 2: Sentiment Analysis**
-
-This prompt assigns a persona to the LLM and asks for a qualitative judgment.
-
-As a senior hiring manager, analyze the following technical answers for sentiment and confidence.  
-Candidate's Answers:  
-{answers_text}  
-\---  
-Provide a brief, one-sentence summary (e.g., "Candidate appears confident and knowledgeable," or "Candidate seems hesitant but provides logical answers.").
-
-- **Objective:** To get a quick, high-level assessment of the candidate's tone.
-- **Strategy:** By instructing the LLM to act "As a senior hiring manager," we frame the task in a professional context. The request for a "brief, one-sentence summary" prevents verbose responses and provides a concise insight for the real-world recruiter.
-
-## **8\. Challenges and Solutions**
-
-- **Challenge:** Ensuring reliable output from the LLM for question generation.
-  - **Solution:** The initial LLM responses included conversational preambles that broke the parsing logic. This was solved by engineering a stricter prompt that explicitly forbids introductory text and by implementing more robust parsing code in Python that actively seeks out numbered lines, ignoring any other text.
-- **Challenge:** Managing user state and conversation flow in Streamlit.
-  - **Solution:** Streamlit's session_state was used extensively to track the user's progress. A "stage" variable (gathering_info, answering_questions, finished) was implemented to create a state machine, ensuring the application always knows what step of the process it is on and what to do next.
-- **Challenge:** Implementing role-based access without a full authentication framework.
-  - **Solution:** For this assignment's scope, a simple and effective solution was implemented using session_state. A boolean flag (admin_logged_in) is set upon successful entry of hardcoded credentials. The Admin Dashboard page checks for this flag at the very start; if it's not true, the page execution is halted with an error message. CSS is used to conditionally hide the page link from the sidebar for non-logged-in users.
+1.  **Login:** Access the dashboard with credentials (`admin@talenthunt.com` / `admin123`).
+2.  **Dashboard:** View the **Leaderboard** of candidates ranked by score.
+    ![Recruiter Dashboard](images/RecruiterDash.png)
+3.  **Deep Dive:** Expand any candidate to see their **Resume Summary**, **Interview Transcript**, and **Contact Details**.

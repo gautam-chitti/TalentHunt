@@ -20,7 +20,11 @@ def init_db():
                 tech_stack TEXT,
                 technical_answers TEXT,
                 sentiment_analysis TEXT,
-                submission_time TEXT
+                submission_time TEXT,
+                resume_text TEXT,
+                match_score REAL,
+                interview_transcript TEXT,
+                candidate_summary TEXT
             )
         """)
         conn.commit()
@@ -32,8 +36,9 @@ def save_candidate(data: dict) -> int:
         cursor.execute("""
             INSERT INTO candidates (
                 full_name, email, phone, years_experience, desired_positions,
-                location, tech_stack, technical_answers, sentiment_analysis, submission_time
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                location, tech_stack, technical_answers, sentiment_analysis, submission_time,
+                resume_text, match_score, interview_transcript, candidate_summary
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             data.get("full_name"),
             data.get("email"),
@@ -44,7 +49,11 @@ def save_candidate(data: dict) -> int:
             data.get("tech_stack"),
             json.dumps(data.get("technical_answers", {})),
             data.get("sentiment_analysis"),
-            datetime.utcnow().isoformat()
+            datetime.utcnow().isoformat(),
+            data.get("resume_text"),
+            data.get("match_score"),
+            json.dumps(data.get("interview_transcript", [])),
+            data.get("candidate_summary")
         ))
         conn.commit()
         return cursor.lastrowid
