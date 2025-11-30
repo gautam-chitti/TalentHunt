@@ -57,7 +57,7 @@ View ranked candidates and detailed insights.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/gautam-chitti/TalentHunt
     cd TalentHunt
     ```
 
